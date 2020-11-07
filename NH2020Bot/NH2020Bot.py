@@ -48,4 +48,4 @@ async def ping(ctx):
 async def settimezone(ctx):
     await ctx.send
 
-client.run('NzE5OTk4MTMzMjAzMTA3ODkx.Xt_5WA.CjTgu2Y6xG-I8k4LJblWJ6ly4t0')
+client.run('')
