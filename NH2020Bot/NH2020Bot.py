@@ -1,4 +1,3 @@
-
 '''
 NewHacks Timezone Converter Bot
 
@@ -25,4 +24,4 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send(f"Pong! **{round(client.latency * 1000)}** ms")
 
-client.run('NzU3MDI3NDU2NTczMTEyNDEz.X2aawg.2D6UKr4VwKGxMpabLau9Utvd2Jk')
+client.run('')
