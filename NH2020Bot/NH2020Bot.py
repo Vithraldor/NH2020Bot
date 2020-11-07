@@ -17,8 +17,8 @@ from datetime import datetime, timedelta
 
 client = commands.Bot(command_prefix = 'tz!')
 
-# FOR TESTING PURPOSES - this prints out all the timezones as presented in pytz
-print(pytz.all_timezones)
+# GLOBAL VARIABLES - needed for conversions etc
+global userTimezone
 
 @client.event
 async def on_ready():
@@ -46,6 +46,26 @@ async def ping(ctx):
 # Set timezone command
 @client.command()
 async def settimezone(ctx):
-    await ctx.send
+    validTimezoneGiven = False
+    
+    await ctx.send("Please enter your GMT offset (example: GMT-14):\n*Please ensure that GMT is capitalized. If you would like to stop using this command, type 'exit'.*")
+    while validTimezoneGiven == False:
+        global userTimezone
+        msg = await client.wait_for('message')
+
+        elementToLookFor = "Etc/" + msg.content
+
+        if elementToLookFor in pytz.all_timezones:
+            # Makes searching through the pytz array easier so we don't have to conactenate 2 strings all the time
+            userTimezone = elementToLookFor
+            await msg.channel.send("Your timezone has been set to **{}**".format(msg.content))
+            break
+        elif 'exit' in msg.content.lower():
+            await msg.channel.send("Exiting command...")
+            await msg.channel.send("Now ready for other input.")
+            break
+        else:
+            await msg.channel.send("Invalid input. Please try again:\n*Please ensure that GMT is capitalized. If you would like to stop using this command, type 'exit'*.")
+
 
 client.run('')
