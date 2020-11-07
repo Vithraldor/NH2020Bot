@@ -10,7 +10,7 @@ from discord.ext import commands, tasks
 import asyncio
 import datetime
 
-client = commands.Bot(command_prefix = 't!')
+client = commands.Bot(command_prefix = 'tz!')
 
 @client.event
 async def on_ready():
@@ -23,5 +23,9 @@ async def on_ready():
 @client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! **{round(client.latency * 1000)}** ms")
+
+@client.command()
+async def testcmd(ctx):
+    await ctx.send("This is a test message.")
 
 client.run('')
