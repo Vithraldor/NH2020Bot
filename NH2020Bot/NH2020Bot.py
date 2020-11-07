@@ -17,6 +17,9 @@ from datetime import datetime, timedelta
 
 client = commands.Bot(command_prefix = 'tz!')
 
+# FOR TESTING PURPOSES - this prints out all the timezones as presented in pytz
+print(pytz.all_timezones)
+
 @client.event
 async def on_ready():
     print("We have logged in as {0.user}".format(client))
@@ -38,5 +41,10 @@ async def on_guild_join(guild):
 @client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! **{round(client.latency * 1000)}** ms")
+
+# Set timezone command
+@client.command()
+async def settimezone(ctx):
+    await ctx.send
 
 client.run('')
