@@ -35,6 +35,7 @@ async def on_guild_join(guild):
         # Loop the command until the bot finds a channel it can post its message in:
         if channel.permissions_for(guild.me).send_messages:
             await channel.send("Hi, I'm the **Timezone Conversion Reminder Bot**.\nTo get started, please set your timezone using **tz!settimezone**.")
+            await channel.send("Upon typing the command, the program will prompt you to enter your **GMT offset**.")
         break
     
 # Test command to see if the ping by ID function works (it does!)
@@ -47,4 +48,4 @@ async def ping(ctx):
 async def settimezone(ctx):
     await ctx.send
 
-client.run('')
+client.run('NzE5OTk4MTMzMjAzMTA3ODkx.Xt_5WA.CjTgu2Y6xG-I8k4LJblWJ6ly4t0')
