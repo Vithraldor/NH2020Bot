@@ -1,10 +1,9 @@
 '''
 NewHacks Timezone Converter Bot
 
-Made by Star, Maple, and Vith
+Made by Catherine Li, Chaeyoung Lim, and Ashley Rivera for NewHacks 2020, a hackathon hosted by the University of Toronto's IEEE chapter.
 
 '''
-
 import discord
 from discord.ext import commands, tasks
 
@@ -29,6 +28,8 @@ async def on_ready():
 @client.event
 async def on_guild_join(guild):
     for channel in guild.text_channels:
+
+        # Loop the command until the bot finds a channel it can post its message in:
         if channel.permissions_for(guild.me).send_messages:
             await channel.send("Hi, I'm the **Timezone Conversion Reminder Bot**.\nTo get started, please set your timezone using **tz!settimezone**.")
         break
@@ -37,9 +38,5 @@ async def on_guild_join(guild):
 @client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! **{round(client.latency * 1000)}** ms")
-
-@client.command()
-async def testcmd(ctx):
-    await ctx.send("This is a test message.")
 
 client.run('')
