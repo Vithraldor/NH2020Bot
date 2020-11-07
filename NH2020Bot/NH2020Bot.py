@@ -6,6 +6,9 @@ Made by Star, Maple, and Vith
 '''
 
 import discord
+from pytz import timezone
+import pytz
+
 from discord.ext import commands, tasks
 import asyncio
 import datetime
