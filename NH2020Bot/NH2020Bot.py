@@ -96,4 +96,4 @@ async def stz(ctx):
 async def setalttimezone(ctx):
     validTimezone = False
 
-client.run('NzE5OTk4MTMzMjAzMTA3ODkx.Xt_kgw.HvcEVeUVHirA7_QtxBNYwbJHuZ4')
+client.run('')
