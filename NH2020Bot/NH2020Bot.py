@@ -19,6 +19,7 @@ client = commands.Bot(command_prefix = 'tz!')
 
 # GLOBAL VARIABLES - needed for conversions etc
 global userTimezone
+global targetTimezone
 
 @client.event
 async def on_ready():
@@ -67,5 +68,32 @@ async def settimezone(ctx):
         else:
             await msg.channel.send("Invalid input. Please try again:\n*Please ensure that GMT is capitalized. If you would like to stop using this command, type 'exit'*.")
 
+# Timezone command, but abbreviated:
+async def stz(ctx):
+    validTimezoneGiven = False
+    
+    await ctx.send("Please enter your GMT offset (example: GMT-14):\n*Please ensure that GMT is capitalized. If you would like to stop using this command, type 'exit'.*")
+    while validTimezoneGiven == False:
+        global userTimezone
+        msg = await client.wait_for('message')
 
-client.run('')
+        elementToLookFor = "Etc/" + msg.content
+
+        if elementToLookFor in pytz.all_timezones:
+            # Makes searching through the pytz array easier so we don't have to conactenate 2 strings all the time
+            userTimezone = elementToLookFor
+            await msg.channel.send("Your timezone has been set to **{}**".format(msg.content))
+            break
+        elif 'exit' in msg.content.lower():
+            await msg.channel.send("Exiting command...")
+            await msg.channel.send("Now ready for other input.")
+            break
+        else:
+            await msg.channel.send("Invalid input. Please try again:\n*Please ensure that GMT is capitalized. If you would like to stop using this command, type 'exit'*.")
+
+
+# Command to set the alternate timezone:
+async def setalttimezone(ctx):
+    validTimezone = False
+
+client.run('NzE5OTk4MTMzMjAzMTA3ODkx.Xt_kgw.HvcEVeUVHirA7_QtxBNYwbJHuZ4')
